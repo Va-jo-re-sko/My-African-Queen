@@ -261,18 +261,18 @@
             
             <div class="identity-item">
                 <label for="birthDate" class="identity-label">Birth Date <span class="optional-tag">(optional)</span></label>
-                <input type="text" id="birthDate" class="identity-input" placeholder="Enter your birth date">
+                <input type="text" id="birthDate" class="identity-input" placeholder="DD.MM.YY">
             </div>
             
             <div class="identity-item">
-                <label for="mathurName" class="identity-label">Mathur's Name</label>
-                <input type="text" id="mathurName" class="identity-input" placeholder="Enter Mathur's name">
-                <div class="error-message" id="mathurError"></div>
+                <label for="motherName" class="identity-label">Mother's Name</label>
+                <input type="text" id="motherName" class="identity-input" placeholder="Enter Mother's name (G.N) ">
+                <div class="error-message" id="motherError"></div>
             </div>
             
             <div class="identity-item">
                 <label for="fatherName" class="identity-label">Father's Name</label>
-                <input type="text" id="fatherName" class="identity-input" placeholder="Enter father's name">
+                <input type="text" id="fatherName" class="identity-input" placeholder="Enter father's name (D.O) ">
                 <div class="error-message" id="fatherError"></div>
             </div>
             
@@ -421,19 +421,19 @@
 
         // Input Validation
         const bestColorInput = document.getElementById('bestColor');
-        const mathurNameInput = document.getElementById('mathurName');
+        const motherNameInput = document.getElementById('mathurName');
         const fatherNameInput = document.getElementById('fatherName');
         const continueBtn = document.getElementById('continueBtn');
         
         const colorError = document.getElementById('colorError');
-        const mathurError = document.getElementById('mathurError');
+        const motherError = document.getElementById('motherError');
         const fatherError = document.getElementById('fatherError');
         const successMessage = document.getElementById('successMessage');
 
         // Correct answers (replace with actual values)
         const CORRECT_COLOR = "blue";
-        const CORRECT_MATHUR = "Mathur"; // Replace with actual name
-        const CORRECT_FATHER = "Father"; // Replace with actual name
+        const CORRECT_MOTHER = "Grace Namwendo"; // Replace with actual name
+        const CORRECT_FATHER = "David Obonyo"; // Replace with actual name
 
         function validateInputs() {
             let isValid = true;
