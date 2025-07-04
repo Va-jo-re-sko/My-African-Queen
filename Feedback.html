@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Correspondence</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #000428 0%, #004e92 100%);
+            color: #F0F8FF;
+            font-family: 'Palatino Linotype', 'Book Antiqua', serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .parchment {
+            background: url('https://example.com/parchment-texture.jpg') center;
+            background-size: cover;
+            max-width: 750px;
+            margin: 30px auto;
+            padding: 40px 50px;
+            border: 15px double #DAA520;
+            border-radius: 5px;
+            box-shadow: 0 0 35px rgba(218, 165, 32, 0.4);
+            position: relative;
+        }
+        .parchment::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            pointer-events: none;
+        }
+        h1 {
+            color: #DAA520;
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px #000;
+            font-variant: small-caps;
+            letter-spacing: 3px;
+        }
+        .subtitle {
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 40px;
+            color: #ADD8E6;
+        }
+        .form-group {
+            margin-bottom: 30px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.2em;
+            color: #DAA520;
+        }
+        textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 248, 220, 0.7);
+            border: 1px solid #DAA520;
+            border-radius: 3px;
+            color: #333;
+            font-size: 1.1em;
+            min-height: 150px;
+            resize: vertical;
+        }
+        .file-upload {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 4px solid #4169E1;
+        }
+        .file-upload label {
+            color: #ADD8E6;
+        }
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px dashed #4169E1;
+            color: white;
+            margin-top: 10px;
+        }
+        .submit-container {
+            text-align: center;
+            margin-top: 40px;
+            position: relative;
+        }
+        .seal-ring {
+            position: absolute;
+            right: 50px;
+            top: -30px;
+            font-size: 3em;
+            opacity: 0.7;
+        }
+        .submit-btn {
+            background: linear-gradient(to right, #DAA520, #F5DEB3);
+            color: #333;
+            border: none;
+            padding: 18px 45px;
+            font-size: 1.3em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(218, 165, 32, 0.4);
+            transition: all 0.3s;
+            position: relative;
+            z-index: 2;
+        }
+        .submit-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 25px rgba(218, 165, 32, 0.6);
+        }
+        .wax-seal {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            background: #B22222;
+            border-radius: 50%;
+            position: relative;
+            margin: 30px auto;
+            box-shadow: 0 0 15px #8B0000;
+            cursor: pointer;
+            transition: transform 0.5s;
+        }
+        .wax-seal:hover {
+            transform: rotate(360deg);
+        }
+        .wax-seal::after {
+            content: "L & Q";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #F5DEB3;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="parchment">
+        <h1>Royal Missive</h1>
+        <p class="subtitle">Compose your personal proclamation, My Queen</p>
+        
+        <form id="royalMessageForm" action="/submit-message" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="introduction">Your Most Gracious Introduction:</label>
+                <textarea id="introduction" name="introduction" placeholder="My Dearest King..." required></textarea>
+            </div>
+            
+            <div class="file-upload">
+                <label for="emotionalVideo">Scroll of Moving Images (Video):</label>
+                <input type="file" id="emotionalVideo" name="emotionalVideo" accept="video/*">
+            </div>
+            
+            <div class="file-upload">
+                <label for="audioMessage">Whispered Words (Audio):</label>
+                <input type="file" id="audioMessage" name="audioMessage" accept="audio/*">
+            </div>
+            
+            <div class="file-upload">
+                <label for="groupImage">Royal Portrait (Group Image):</label>
+                <input type="file" id="groupImage" name="groupImage" accept="image/*">
+            </div>
+            
+            <div class="submit-container">
+                <div class="seal-ring">💍</div>
+                <button type="submit" class="submit-btn">
+                    Seal & Deliver to Your King
+                </button>
+                
+                <div class="wax-seal" onclick="document.getElementById('royalMessageForm').submit()"></div>
+                <p>Press the royal seal when ready</p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('royalMessageForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect all form data (in a real app, this would send to server)
+            const formData = new FormData(this);
+            
+            // Simple validation
+            if (!formData.get('introduction')) {
+                alert('My Queen, your introduction would light up our kingdom!');
+                return;
+            }
+            
+            // Show confirmation (replace with actual submission)
+            const confirmation = confirm("Shall this royal missive be delivered to your King?");
+            if (confirmation) {
+                // In production: Send data via fetch() or let form submit normally
+                console.log('Form would submit with:', {
+                    introduction: formData.get('introduction'),
+                    files: {
+                        video: formData.get('emotionalVideo')?.name,
+                        audio: formData.get('audioMessage')?.name,
+                        image: formData.get('groupImage')?.name
+                    }
+                });
+                
+                // Redirect to completion page
+                window.location.href = 'completion.html';
+            }
+        });
+    </script>
+</body>
+              </html>
