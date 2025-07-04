@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Queen</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;500&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+            color: #e0e0e0;
+            background: #000814;
+        }
+        
+        #heart-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #6a9eff;
+            text-shadow: 0 0 10px rgba(106, 158, 255, 0.5);
+        }
+        
+        .input-container {
+            background: rgba(0, 13, 26, 0.8);
+            border: 1px solid #4d8cff;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            max-width: 500px;
+            width: 90%;
+        }
+        
+        .input-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #a7c4ff;
+            font-size: 1rem;
+        }
+        
+        input {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(0, 5, 15, 0.5);
+            border: 1px solid #4d8cff;
+            border-radius: 6px;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .error-message {
+            color: #ff8a8a;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .next-btn {
+            background: rgba(77, 140, 255, 0.2);
+            border: 1px solid #4d8cff;
+            color: #c1d6ff;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            border-radius: 50px;
+            margin-top: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .next-btn:hover {
+            background: rgba(77, 140, 255, 0.3);
+        }
+        
+        .success-message {
+            color: #86efac;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="heart-background"></canvas>
+    
+    <div class="container">
+        <h1>Welcome My Queen</h1>
+        
+        <div class="input-container">
+            <div class="input-group">
+                <label for="threeNames">Enter your sacred names:</label>
+                <input type="text" id="threeNames" placeholder="Musanarubaga Shalom Peace">
+                <div class="error-message" id="nameError"></div>
+            </div>
+            
+            <div class="input-group">
+                <label for="bestNumber">Enter your divine number:</label>
+                <input type="number" id="bestNumber" placeholder="9">
+                <div class="error-message" id="numberError"></div>
+            </div>
+            
+            <div class="success-message" id="successMessage"></div>
+            
+            <button class="next-btn" id="nextBtn">Continue</button>
+        </div>
+    </div>
+    
+    <script>
+        // Simple Heart-shaped Particle Flow with larger size
+        const canvas = document.getElementById('heart-background');
+        const ctx = canvas.getContext('2d');
+        
+        // Set canvas size
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        // Heart shape function (larger size)
+        function heartShape(t, scale) {
+            scale = scale || 16; // Increased from 10 to 16 for larger heart
+            t *= Math.PI;
+            return {
+                x: 16 * Math.pow(Math.sin(t), 3),
+                y: -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t))
+            };
+        }
+        
+        // Particles array
+        const particles = [];
+        const particleCount = 150; // Increased particle count for better visibility
+        
+        // Create particles
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                progress: Math.random(),
+                speed: Math.random() * 0.002 + 0.001,
+                size: Math.random() * 4 + 3, // Slightly larger particles
+                hue: 210 + Math.random() * 30 - 15
+            });
+        }
+        
+        // Animation loop
+        function animate() {
+            // Clear canvas with semi-transparent background
+            ctx.fillStyle = 'rgba(0, 8, 20, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Center position
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const scale = Math.min(canvas.width, canvas.height) * 0.25; // Increased scale from 0.15 to 0.25
+            
+            // Update and draw particles
+            particles.forEach(p => {
+                p.progress += p.speed;
+                if (p.progress > 1) p.progress = 0;
+                
+                const heartPos = heartShape(p.progress, scale);
+                const x = centerX + heartPos.x * scale / 16;
+                const y = centerY + heartPos.y * scale / 16;
+                
+                // Draw particle with glow effect
+                ctx.beginPath();
+                ctx.arc(x, y, p.size * 1.5, 0, Math.PI * 2); // Larger glow radius
+                ctx.fillStyle = `hsla(${p.hue}, 80%, 60%, 0.3)`;
+                ctx.fill();
+                
+                ctx.beginPath();
+                ctx.arc(x, y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = `hsla(${p.hue}, 80%, 65%, 0.9)`;
+                ctx.fill();
+            });
+            
+            requestAnimationFrame(animate);
+        }
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Start animation
+        animate();
+
+        // Input Validation
+        const threeNamesInput = document.getElementById('threeNames');
+        const bestNumberInput = document.getElementById('bestNumber');
+        const nameError = document.getElementById('nameError');
+        const numberError = document.getElementById('numberError');
+        const successMessage = document.getElementById('successMessage');
+        const nextBtn = document.getElementById('nextBtn');
+
+        const CORRECT_NAMES = "Musanarubaga Shalom Peace";
+        const CORRECT_NUMBER = "9";
+
+        function validateInputs() {
+            let namesValid = false;
+            let numberValid = false;
+
+            // Validate names
+            if (threeNamesInput.value.trim() === CORRECT_NAMES) {
+                nameError.textContent = "";
+                namesValid = true;
+            } else {
+                nameError.textContent = "Incorrect names";
+                namesValid = false;
+            }
+
+            // Validate number
+            if (bestNumberInput.value === CORRECT_NUMBER) {
+                numberError.textContent = "";
+                numberValid = true;
+            } else {
+                numberError.textContent = "Incorrect number";
+                numberValid = false;
+            }
+
+            // Enable button if both are correct
+            if (namesValid && numberValid) {
+                successMessage.textContent = "Validation complete!";
+            } else {
+                successMessage.textContent = "";
+            }
+        }
+
+        // Add event listeners
+        threeNamesInput.addEventListener('input', validateInputs);
+        bestNumberInput.addEventListener('input', validateInputs);
+
+        // Next button functionality
+        nextBtn.addEventListener('click', () => {
+            if (successMessage.textContent) {
+                window.location.href = 'identity.html';
+            }
+        });
+
+        // Initial validation check
+        validateInputs();
+    </script>
+</body>
+</html>
