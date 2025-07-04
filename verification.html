@@ -447,11 +447,11 @@
             }
 
             // Validate Mathur's name (case sensitive)
-            if (mathurNameInput.value.trim() !== CORRECT_MATHUR) {
-                mathurError.textContent = "Please enter the correct name";
+            if (motherNameInput.value.trim() !== CORRECT_MOTHER) {
+                motherError.textContent = "Please enter the correct name";
                 isValid = false;
             } else {
-                mathurError.textContent = "";
+                motherError.textContent = "";
             }
 
             // Validate Father's name (case sensitive)
@@ -473,7 +473,7 @@
         }
 
         // Add event listeners for validation
-        [bestColorInput, mathurNameInput, fatherNameInput].forEach(input => {
+        [bestColorInput, motherNameInput, fatherNameInput].forEach(input => {
             input.addEventListener('input', validateInputs);
             // Improve mobile UX by hiding keyboard after pressing enter
             input.addEventListener('keypress', (e) => {
