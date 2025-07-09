@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery of Memories</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(ellipse at bottom, #001f3f 0%, #000000 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #e6f2ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      text-align: center;
+    }h1 {
+  font-size: 2.5em;
+  margin-bottom: 1rem;
+  color: #cce7ff;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 2rem;
+  animation: fadeIn 2s ease;
+}
+
+.memory-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s;
+}
+
+.memory-card:hover {
+  transform: scale(1.03);
+}
+
+.memory-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.memory-caption {
+  padding: 0.8rem;
+  font-size: 1em;
+  color: #cceeff;
+}
+
+.next-button {
+  background: #0066cc;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.next-button:hover {
+  background: #3399ff;
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+  </style>
+</head>
+<body>
+  <h1>Gallery of Memories</h1>
+  <div class="memory-grid">
+    <!-- Sample memory cards. Replace image URLs and captions as needed -->
+    <div class="memory-card">
+      <img src="/Visitation.jpg" alt="Memory 1">
+      <div class="memory-caption">Our first visitation. It was a dream come true. i wish you kept that smile till now.</div>
+    </div>
+    <div class="memory-card">
+      <img src="/First-Visitation.jpg" alt="Memory 2">
+      <div class="memory-caption">That day you made me laugh endlessly 😂</div>
+    </div>
+    <div class="memory-card">
+      <img src="/DP-change.jpg" alt="Memory 3">
+      <div class="memory-caption">The stupid serious profile pictures we changed make me remember the happiness we had.</div>
+    </div>
+       <div class="memory-card">
+      <img src="/Kingdom-name.webp" alt="Memory 3">
+      <div class="memory-caption">The Kingdom that we created. It is even made our fellowmates to shout when they saw you. How strong it was!.</div>
+    </div>
+     <div class="memory-card">
+      <img src="/Bracelet-promise.jpg" alt="Memory 3">
+      <div class="memory-caption">The bracelet I promised to give you on 14th. But that is when everything got ruined and i hated myself hence giving it to another one.</div>
+    </div>
+          <div class="memory-card">
+      <img src="/you-EATING.jpg">
+      <div class="memory-caption">I used to enjoy forcing you to eat because it was good to see you healthy. I think you can now take care of yourself because you recently gained weight. </div>
+    </div>
+  </div>
+  <button class="next-button" onclick="location.href='questions.html'">Next</button>
+</body>
+</html>
