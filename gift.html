@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Birthday Gift</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(ellipse at bottom, #001f3f 0%, #000000 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #e6f2ff;
+      text-align: center;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .gift-box {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 700px;
+      width: 100%;
+      animation: fadeIn 2s ease;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 1rem;
+      color: #cce7ff;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .gift-button {
+      background: #00cc99;
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .gift-button:hover {
+      background: #33ffcc;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 2em; }
+      p { font-size: 1em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="gift-box">
+    <h1>Your Royal Birthday Gift 🎁</h1>
+    <p>
+      Peace Shalom, you’ve made it to the final chapter of this birthday adventure.<br>
+      This gift is not wrapped in paper or ribbon—it's wrapped in care, memories, and meaning.<br><br>
+      No matter where life takes us, know that you are valued beyond words. Today, you receive not just a gift, but a promise of purpose, creativity, and joy that you inspired.
+    </p>
+    <a class="gift-button" href="https://drive.google.com/file/d/your_gift_link_here/view?usp=sharing" target="_blank">Open Your Gift</a>
+  </div>
+</body>
+</html>
