@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Royal Bond</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(ellipse at bottom, #001f3f 0%, #000000 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #e6f2ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
+    }.container {
+  max-width: 850px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 20px;
+  animation: fadeIn 2s ease;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #cce7ff;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.2em;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.next-button {
+  background: #0066cc;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.next-button:hover {
+  background: #3399ff;
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 2em; }
+  p { font-size: 1em; }
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Our Royal Bond</h1>
+    <p>
+      Together, we are more than two hearts—we are a force of joy and strength.<br><br>
+      From laughter that echoes in long conversations, to shared dreams whispered under imaginary stars,<br />
+      we have built something golden and timeless.<br><br>
+      Our bond is not just sweet; it's smart, brave, playful, and purpose-driven.
+      It is a melody that continues to play even in silence.
+      <br><br>
+      This is not just about today—it’s about forever written in love, trust, and royalty.
+    </p>
+    <button class="next-button" onclick="location.href='memories.html'">Next</button>
+  </div>
+</body>
+</html>
