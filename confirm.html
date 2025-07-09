@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Confirm It's You</title>
   <style>
+    /* Your existing CSS styles here */
     body {
       margin: 0;
       padding: 0;
@@ -18,91 +19,63 @@
       text-align: center;
       padding: 1.5rem;
     }
-
-    .container {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2rem;
-      border-radius: 15px;
-      backdrop-filter: blur(10px);
-      max-width: 400px;
-      width: 100%;
-      animation: fadeIn 2s ease;
-    }
-
-    h1 {
-      margin-bottom: 1rem;
-      color: #cce7ff;
-      font-size: 2em;
-    }
-
-    p {
-      margin-bottom: 1.5rem;
-      font-size: 1.1em;
-      color: #cceeff;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 0.8rem;
-      font-size: 1em;
-      margin-bottom: 1.5rem;
-      border: none;
-      border-radius: 8px;
-    }
-
-    button {
-      background: #0066cc;
-      color: white;
-      padding: 0.8rem 1.5rem;
-      font-size: 1em;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.3s ease;
-    }
-
-    button:hover {
-      background: #3399ff;
-      transform: scale(1.05);
-    }
-
-    .error {
-      color: #ff9999;
-      margin-top: 1rem;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    /* ... rest of your CSS ... */
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Confirm It's You</h1>
     <p>Just a royal checkpoint. Which topic in Physics did I last teach you?</p>
-<form id="verificationForm" action="https://formsubmit.co/jjuukojamesjordan055@gmail.com" method="POST">
-  <input type="text" id="answer" name="answer" placeholder="Enter your answer here..." required>
-  <!-- Redirect to a "success" page after submission -->
-  <input type="hidden" name="_next" value="myinfo.html">
-  <input type="hidden" name="_captcha" value="false">
-  <button type="submit" onclick="return checkAnswer()">Proceed</button>
-</form>
+    
+    <!-- Updated Form Structure -->
+    <form id="verificationForm" method="POST">
+      <input type="text" id="answer" name="answer" placeholder="Enter your answer here..." required>
+      <input type="hidden" name="_next" value="https://va-jo-re-sko.github.io/My-African-Queen/myinfo.html">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="basic">
+      <button type="submit" id="submitBtn">Proceed</button>
+    </form>
     <p class="error" id="error-msg"></p>
   </div>
 
   <script>
-    function checkAnswer() {
+    document.getElementById('verificationForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Stop normal form submission
+      
       const input = document.getElementById('answer').value.trim().toLowerCase();
-      const correct = 'formation of stars';
+      const correctAnswers = ['formation of stars', 'star formation', 'stars formation']; // Multiple acceptable answers
       const errorMsg = document.getElementById('error-msg');
-
-      if (input !== correct) {
+      const submitBtn = document.getElementById('submitBtn');
+      
+      // Check if answer is correct
+      if (!correctAnswers.includes(input)) {
         errorMsg.textContent = 'Oops! That doesn\'t seem right, dear queen.';
-        return false; // Prevent form submission
+        return false;
       }
-      return true; // Allow form submission
-    }
+      
+      // If correct, submit to FormSubmit
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Verifying...';
+      
+      // Create a new form submission
+      const formData = new FormData(this);
+      
+      fetch('https://formsubmit.co/ajax/jjuukojamesjordan055@gmail.com', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        window.location.href = 'https://yourdomain.com/myinfo.html';
+      })
+      .catch(error => {
+        errorMsg.textContent = 'Submission failed. Please try again.';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Proceed';
+      });
+      
+      return false;
+    });
   </script>
 </body>
 </html>
