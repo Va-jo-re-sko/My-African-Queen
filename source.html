@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Source of the Message</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #001f3f, #000000);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #e6f2ff;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 700px;
+      animation: fadeIn 2.5s ease-in-out;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      color: #cce7ff;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.7;
+      color: #e6f2ff;
+      margin-bottom: 2rem;
+    }
+
+    .next-button {
+      background: #0066cc;
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .next-button:hover {
+      background: #3399ff;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2em;
+      }
+      p {
+        font-size: 1em;
+      }
+      .next-button {
+        font-size: 1em;
+        padding: 0.8rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>The Source of This Message</h1>
+    <p>
+      This message was born from the deepest corners of my heart,<br />
+      carried by the winds of admiration, and shaped by every smile you've shared.<br /><br />
+      It is more than just a birthday wish, it's a treasure of thought, love, and gratitude<br />
+      woven together to remind you of how deeply you’re valued.<br /><br />
+      It comes from me, Your King, to you, the Queen of my thoughts and dreams.
+    </p>
+    <button class="next-button" onclick="location.href='confirm.html'">Continue</button>
+  </div>
+</body>
+</html>
