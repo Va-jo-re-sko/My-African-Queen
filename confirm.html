@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Confirm It's You</title>
   <style>
     body {
@@ -82,26 +82,23 @@
     <h1>Confirm It's You</h1>
     <p>Just a royal checkpoint. Which topic in Physics did I last teach you?</p>
     <form id="verificationForm" action="https://formsubmit.co/jjuukojamesjordan055@gmail.com" method="POST">
-      <input type="text" id="answer" name="answer" placeholder="Enter your answer here..." required>
-      <!-- Redirect to a "success" page after submission -->
-      <input type="hidden" name="_next" value="myinfo.html">
-      <button type="button" onclick="checkAnswer()">Proceed</button>
+      <input type="text" id="answer" name="answer" placeholder="Enter your answer here..." required />
+      <input type="hidden" name="_next" value="myinfo.html" />
+      <button type="submit">Proceed</button>
     </form>
     <p class="error" id="error-msg"></p>
   </div>
 
   <script>
-    function checkAnswer() {
+    document.getElementById('verificationForm').addEventListener('submit', function(event) {
       const input = document.getElementById('answer').value.trim().toLowerCase();
-      const correct = 'formation of stars'; // Make this all lowercase for case-insensitive comparison
+      const correct = 'formation of stars';
 
-      if (input === correct) {
-        // Submit the form if answer is correct
-        document.getElementById('verificationForm').submit();
-      } else {
-        document.getElementById('error-msg').textContent = 'Oops! That doesn\'t seem right, dear queen.';
+      if (input !== correct) {
+        event.preventDefault(); // Stop form submission
+        document.getElementById('error-msg').textContent = "Oops! That doesn't seem right, dear queen.";
       }
-    }
+    });
   </script>
 </body>
 </html>
