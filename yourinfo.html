@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Know the Queen</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(ellipse at bottom, #001f3f 0%, #000000 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #e6f2ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 800px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 20px;
+      animation: fadeIn 2s ease;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #cce7ff;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .next-button {
+      background: #0066cc;
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .next-button:hover {
+      background: #3399ff;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 2em; }
+      p { font-size: 1em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Know the Queen</h1>
+    <p>
+      You are Musanarubaga Peace Shalom—more than a name, more than a girl. You are light wrapped in grace, fierce like the panther, gentle like the morning rain.<br><br>
+      Your laugh is healing, your strength is inspiring, and your presence—undeniably royal.<br><br>
+      You are thoughtful, passionate, intelligent, and beautifully brave. Your dreams shine like stars, and your soul echoes kindness.<br><br>
+      You are not just my queen, you are the reason this entire world of words and wonder was made.
+    </p>
+    <button class="next-button" onclick="location.href='ourinfo.html'">Next</button>
+  </div>
+</body>
+</html>
